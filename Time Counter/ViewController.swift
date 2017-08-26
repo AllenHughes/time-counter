@@ -13,20 +13,29 @@ class ViewController: UIViewController {
     @IBOutlet weak var timerLable: UILabel!
     @IBOutlet weak var countButton: UIButton!
     @IBOutlet weak var pauseButton: UIButton!
-    @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
-    
+
 
     var seconds = 60
     var count = 0
     var timer = Timer()
+
     var isTimerRunning = false
     var isTimerPaused = false
 
     @IBAction func countButtonTapped(_ sender: UIButton) {
         if self.isTimerRunning == true {
+
             self.count += 1
             countButton.setTitle("\(count)", for: .normal)
+
+        } else {
+
+            runTimer()
+
+            self.count += 1
+            self.countButton.setTitle("\(count)", for: .normal)
+
         }
     }
     @IBAction func timerPausedButtonTapped(_ sender: UIButton) {
@@ -35,35 +44,12 @@ class ViewController: UIViewController {
             
             self.isTimerPaused = true
             self.isTimerRunning = false
-            
-            self.countButton.isEnabled = false
-            
+
             self.pauseButton.isHidden = true
             self.pauseButton.isEnabled = false
-            
-            self.startButton.isHidden = false
-            self.startButton.isEnabled = true
-            
+
             self.resetButton.isHidden = false
             self.resetButton.isEnabled = true
-        }
-    }
-    
-    @IBAction func timerStartButtonTapped(_ sender: UIButton) {
-        if isTimerRunning == false {
-            runTimer()
-            
-            self.pauseButton.isHidden = false
-            self.pauseButton.isEnabled = true
-            
-            self.startButton.isHidden = true
-            self.startButton.isEnabled = false
-            
-            self.resetButton.isHidden = true
-            self.resetButton.isEnabled = false
-            
-            self.countButton.isEnabled = true
-            self.countButton.setTitle("\(count)", for: .normal)
         }
     }
     
@@ -75,7 +61,6 @@ class ViewController: UIViewController {
             self.timerLable.text = "00:00:00"
             
             self.countButton.setTitle("Count", for: .normal)
-            self.countButton.isEnabled = false
             
             self.resetButton.isEnabled = false
         }
@@ -104,14 +89,10 @@ class ViewController: UIViewController {
             
             self.isTimerRunning = false
             self.isTimerPaused = false
-            
-            self.countButton.isEnabled = false
-            
+
             self.pauseButton.isHidden = true
             self.pauseButton.isEnabled = false
             
-            self.startButton.isHidden = false
-            self.startButton.isEnabled = true
             
             self.resetButton.isHidden = false
             self.resetButton.isEnabled = true
@@ -123,16 +104,23 @@ class ViewController: UIViewController {
                                      userInfo:nil, repeats: true)
         self.isTimerRunning = true
         self.isTimerPaused = false
+        
+        self.resetButton.isHidden = true
+        self.resetButton.isEnabled = false
+        
+        self.pauseButton.isHidden = false
+        self.pauseButton.isEnabled = true
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         countButton.setTitle("Count", for: .normal) // sets the text for countButton for startup
-        countButton.isEnabled = false
+        
         pauseButton.isHidden = true
+        
+        resetButton.isHidden = true
         resetButton.isEnabled = false
-        // Do any additional setup after loading the view, typically from a nib.
     }
-
 }
 

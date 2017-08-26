@@ -55,20 +55,8 @@
                                     <action selector="timerPausedButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fcW-Tz-weD"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oyb-9p-ACU">
-                                <rect key="frame" x="57" y="514" width="102" height="66"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Start">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="timerStartButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BJj-Xm-ALr"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5L5-tj-77u">
-                                <rect key="frame" x="215" y="514" width="102" height="66"/>
+                                <rect key="frame" x="57" y="514" width="260" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -89,7 +77,6 @@
                         <outlet property="countButton" destination="1CV-cc-Sn7" id="vBN-kN-hPW"/>
                         <outlet property="pauseButton" destination="KWr-iV-vKW" id="p38-mb-tmX"/>
                         <outlet property="resetButton" destination="5L5-tj-77u" id="Q5A-jN-bdv"/>
-                        <outlet property="startButton" destination="oyb-9p-ACU" id="R63-2k-JOr"/>
                         <outlet property="timerLable" destination="Ade-kP-ez6" id="2rE-x7-6WX"/>
                     </connections>
                 </viewController>
