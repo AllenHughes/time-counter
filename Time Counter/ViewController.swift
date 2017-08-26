@@ -15,8 +15,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
 
-
-    var seconds = 60
+    var timerLength = 60
+    var seconds = 0
     var count = 0
     var timer = Timer()
 
@@ -55,10 +55,10 @@ class ViewController: UIViewController {
     
     @IBAction func resetButtonTapped(_ sender: UIButton) {
         if isTimerRunning == false {
-            self.seconds = 60
+            self.seconds = timerLength
             self.count = 0
             
-            self.timerLable.text = "00:00:00"
+            self.timerLable.text = timerString(time: TimeInterval(self.seconds))
             
             self.countButton.setTitle("Count", for: .normal)
             
@@ -77,14 +77,14 @@ class ViewController: UIViewController {
     func updateTimer() {
         if seconds > 0 {
             // Call every second
-            seconds -= 1
-            timerLable.text = timerString(time: TimeInterval(self.seconds))
+            self.seconds -= 1
+            self.timerLable.text = timerString(time: TimeInterval(self.seconds))
             
         } else {
             // Call when countdown hits zero
             timer.invalidate()
             
-            self.seconds = 60
+            self.seconds = timerLength
             self.count = 0
             
             self.isTimerRunning = false
@@ -115,12 +115,16 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        countButton.setTitle("Count", for: .normal) // sets the text for countButton for startup
+        self.seconds = self.timerLength
         
-        pauseButton.isHidden = true
+        self.timerLable.text = timerString(time: TimeInterval(self.seconds))
         
-        resetButton.isHidden = true
-        resetButton.isEnabled = false
+        self.countButton.setTitle("Count", for: .normal) // sets the text for countButton for startup
+        
+        self.pauseButton.isHidden = true
+        
+        self.resetButton.isHidden = true
+        self.resetButton.isEnabled = false
     }
 }
 
