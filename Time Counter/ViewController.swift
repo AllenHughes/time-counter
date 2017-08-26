@@ -90,11 +90,31 @@ class ViewController: UIViewController {
     }
     
     func updateTimer() {
-        if seconds <= 0 {
-            timer.invalidate()
-        } else {
+        if seconds > 0 {
+            // Call every second
             seconds -= 1
             timerLable.text = timerString(time: TimeInterval(self.seconds))
+            
+        } else {
+            // Call when countdown hits zero
+            timer.invalidate()
+            
+            self.seconds = 60
+            self.count = 0
+            
+            self.isTimerRunning = false
+            self.isTimerPaused = false
+            
+            self.countButton.isEnabled = false
+            
+            self.pauseButton.isHidden = true
+            self.pauseButton.isEnabled = false
+            
+            self.startButton.isHidden = false
+            self.startButton.isEnabled = true
+            
+            self.resetButton.isHidden = false
+            self.resetButton.isEnabled = true
         }
     }
     
